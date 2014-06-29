@@ -16,7 +16,9 @@
 	</form>
 
 	<% @result.each do |photo| %>
-		<img src = "<%= photo["images"]["standard_resolution"]["url"] %>" width = "300px" />
+		<a href = "<%= photo["link"] %>" >
+			<img src = "<%= photo["images"]["standard_resolution"]["url"] %>" width = "300px" />
+		</a>
 	<% end %>
 
 </div>
