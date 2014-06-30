@@ -1,0 +1,28 @@
+	<div id = "headblock">
+		
+		<h1 class = "header"> Welcome to photo instagram padawan! </h1>
+		<div id = "blackback">
+			<%= image_tag( "DarthVader.jpg", size: "400x200", :id => "Darth" ) %>
+		</div>
+
+	</div>	
+
+	<div>
+
+		<p class = "AverageText"> Enter tag to search images: </p>
+		
+		<%= form_tag root_path, method: :get do %>
+			<p>
+				<%= text_field_tag :tag, params[:tag] %>
+				<%= submit_tag "Confirm", name: :nil %>
+			</p>
+		<% end %>
+
+		<% @photo.each do |p| %>
+			<a href = "<%= p["link"] %>" >
+				<img src = "<%= p["images"]["standard_resolution"]["url"] %>" width = "300px" />
+			</a>
+		<% end %>
+
+	</div>
+

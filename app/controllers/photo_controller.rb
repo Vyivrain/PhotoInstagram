@@ -1,7 +1,10 @@
 class PhotoController < ApplicationController
 	
+	def index
+		@photo = MyPhoto.search( params[:tag] )
+	end
+
 	def new
-		@tag = "kittens"
-		@result = Instagram.tag_recent_media( @tag )
+		@photo = MyPhoto.new
 	end
 end
