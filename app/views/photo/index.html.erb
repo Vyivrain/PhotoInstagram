@@ -11,6 +11,7 @@
 
 		<p class = "AverageText"> Enter tag to search images: </p>
 		
+		<!-- Check -->
 		<%= form_tag root_path, method: :get do %>
 			<p>
 				<%= text_field_tag :tag, params[:tag], required: true %>

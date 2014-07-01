@@ -7,4 +7,7 @@ class PhotoController < ApplicationController
 	def new
 		@photo = MyPhoto.new
 	end
+
+	def create
+	end
 end
