@@ -1,3 +1,48 @@
 // Place all the styles related to the photo controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+.header {
+	text-align: center;
+	float: center;
+}
+
+.textleft {
+	text-align: left;
+}
+
+#headblock {
+	background-color: #6D48D7;
+	height: 100%;
+	width: 100%;
+}
+
+* {
+	margin: 0;
+	padding: 0;
+}
+
+#Darth {
+	margin: 0 auto;
+	position: relative;
+	display: block;
+}
+
+#blackback {
+	height: 200;
+	width: 100%;
+	background-color: black;
+}
+
+body {
+	float: center;
+	height: 100%;
+	width: 100%;
+	display: block;
+	background-color: #4F2982;
+}
+
+.AverageText {
+	font-size: 1em;
+	font-family: serif;
+	color: white;
+}

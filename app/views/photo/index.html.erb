@@ -13,7 +13,7 @@
 		
 		<%= form_tag root_path, method: :get do %>
 			<p>
-				<%= text_field_tag :tag, params[:tag] %>
+				<%= text_field_tag :tag, params[:tag], required: true %>
 				<%= submit_tag "Confirm", name: :nil %>
 			</p>
 		<% end %>
