@@ -1,29 +1,72 @@
-	<div id = "headblock">
-		
-		<h1 class = "header"> Welcome to photo instagram padawan! </h1>
-		<div id = "blackback">
-			<%= image_tag( "DarthVader.jpg", size: "400x200", :id => "Darth" ) %>
-		</div>
+<div id = "headblock">
+	
+	<h1 class = "header"> Welcome to photo instagram padawan! </h1>
+	<div id = "blackback">
+		<%= image_tag( "DarthVader.jpg", size: "400x200", :id => "Darth" ) %>
+	</div>
 
-	</div>	
+</div>	
 
-	<div>
+<div>
 
-		<p class = "AverageText"> Enter tag to search images: </p>
+	<div class = "AverageText" >
+
+		<p > Enter tag to search images: </p>
 		
 		<!-- Check -->
 		<%= form_tag root_path, method: :get do %>
+		
 			<p>
 				<%= text_field_tag :tag, params[:tag], required: true %>
-				<%= submit_tag "Confirm", name: :nil %>
-			</p>
-		<% end %>
 
+			</p>
+	</div>
+	<div class = "pos" >
+		<div class = "gradient" >
+			<p>
+				<%= check_box_tag :tags, 'tags', !params[:tags].nil? %>
+				<%= label_tag :tags, "Tags search" %>
+			</p>
+			<p>
+				<%= check_box_tag :user_id, 'user_id', !params[:user_id].nil? %>
+				<%= label_tag :user_id, "User id search" %>
+			</p>
+			<p>
+				<%= check_box_tag :coords, 'coords', !params[:coords].nil? %>
+				<%= label_tag :coords, "Coordinate search" %>
+			</p>
+			<p>
+				<%= check_box_tag :check_in, 'check_in', !params[:check_in].nil? %>
+				<%= label_tag :check_in, "Check-in search" %>
+			</p>
+		</div>
+
+		<p>
+			<%= submit_tag "Confirm", name: :nil, :id => "button" %>
+		</p>
+
+	</div>
+
+	<div class = "pos" >
+
+		<p class = "pad"> Tips: </p>
+		<ul class = "pad">
+			<li> Tag length on tags search must be lesser than 10 chars </li>
+			<li> User id must contain only numbers </li>
+			<li> Coordinate search must be this type "35.25,-25.45" </li>
+			<li> Check-in id must be more than 20 chars </li>
+		</ul>
+	</div>
+
+	<% end %>
+
+
+	<% if params[:tags] or params[:user_id] or params[:coords] or params[:check_in]  %> 
 		<% @photo.each do |p| %>
 			<a href = "<%= p["link"] %>" >
 				<img src = "<%= p["images"]["standard_resolution"]["url"] %>" width = "300px" />
 			</a>
 		<% end %>
+	<% end %>
 
-	</div>
-
+</div>
