@@ -50,7 +50,7 @@ body {
 
 .gradient {
 	position: relative;
-	width: 9.2em;
+	width: 11em;
 	background: linear-gradient( white, blue );
 	padding-left: 10px;
 	padding-right: 5px;
@@ -63,16 +63,38 @@ body {
 
 #button {
 	position: relative;
-	width: 12.8em;
+	width: 15em;
 	height: 2.3em;
 }
 
-.pos {
+.border {
 	position: relative;
-
 	float: left;
+}
+
+.border_tip {
+	position: relative;
+	float: right;
+	border: 15px solid transparent;
+	border-image: url( border3.png ) 30 30 round;
+
 }
 
 .pad {
 	padding-left: 5em;
+	color: white;
+	position: relative;
+	float: left;
+	background: linear-gradient( blue, grey );
+}
+
+.text_label {
+	width: 14.8em;
+}
+
+.image {
+	position: relative;
+	clear: left;
+	float: left;
+	display: block;
 }

@@ -9,64 +9,63 @@
 
 <div>
 
-	<div class = "AverageText" >
+	<div>
+		<div class = "AverageText" >
 
-		<p > Enter tag to search images: </p>
-		
-		<!-- Check -->
+			<p > Enter tag to search images: </p>
+			
+			<!-- Check -->
 		<%= form_tag root_path, method: :get do %>
-		
-			<p>
-				<%= text_field_tag :tag, params[:tag], required: true %>
+			
+				<p>
+					<%= text_field_tag :tag, params[:tag], required: true, class: "text_label" %>
+				</p>
+		</div>
+		<div class = "border" >
+			<div class = "gradient" >
+				<% @radioButName.each do |key,value| %>
+					<p>
+						<%= radio_button_tag :check_tag, key %>
+						<%= label_tag :check_tag, value %>
+					</p>
+				<% end %> 
+			</div>
 
-			</p>
-	</div>
-	<div class = "pos" >
-		<div class = "gradient" >
 			<p>
-				<%= check_box_tag :tags, 'tags', !params[:tags].nil? %>
-				<%= label_tag :tags, "Tags search" %>
+				<%= submit_tag "Confirm", name: :nil, :id => "button" %>
 			</p>
-			<p>
-				<%= check_box_tag :user_id, 'user_id', !params[:user_id].nil? %>
-				<%= label_tag :user_id, "User id search" %>
-			</p>
-			<p>
-				<%= check_box_tag :coords, 'coords', !params[:coords].nil? %>
-				<%= label_tag :coords, "Coordinate search" %>
-			</p>
-			<p>
-				<%= check_box_tag :check_in, 'check_in', !params[:check_in].nil? %>
-				<%= label_tag :check_in, "Check-in search" %>
-			</p>
+
 		</div>
 
-		<p>
-			<%= submit_tag "Confirm", name: :nil, :id => "button" %>
-		</p>
 
-	</div>
+		<div class = "border_tip" >
 
-	<div class = "pos" >
-
-		<p class = "pad"> Tips: </p>
-		<ul class = "pad">
-			<li> Tag length on tags search must be lesser than 10 chars </li>
-			<li> User id must contain only numbers </li>
-			<li> Coordinate search must be this type "35.25,-25.45" </li>
-			<li> Check-in id must be more than 20 chars </li>
-		</ul>
+			<p class = "pad"> Tips: </p>
+			<p>
+				<ul class = "pad">
+					<li> Make sure to enter request in the correct order or the site won't understand you </li>
+					<li> Tags can go any order, 2 tags is limit, example: "cat kitten" </li>
+					<li> First goes user id, then tag, example: "1422420615 cat" </li>
+					<li> First go coords, then user id, example: "34.071,-118.445 13328775" </li>
+					<li> First input coords, then tag, example: "34.071,-118.445 summer"  </li>
+					<li> First goes checkin, then tag, example: "53c3800c498e0abe55f520f0 food" </li>
+					<li> First goes checkin, then user id, example: "53c3800c498e0abe55f520f0 210579418" </li>
+					<li> First goes checkin, then tag and then user id, example: "53c3800c498e0abe55f520f0 food 210579418" </li>
+				</ul>
+			</p>
+		</div>
 	</div>
 
 	<% end %>
 
+	<div class = "image" >
+		<% if @photo.present?  %> 
+			<% @photo.each do |p| %>
+				<a href = "<%= p["link"] %>" >
 
-	<% if params[:tags] or params[:user_id] or params[:coords] or params[:check_in]  %> 
-		<% @photo.each do |p| %>
-			<a href = "<%= p["link"] %>" >
-				<img src = "<%= p["images"]["standard_resolution"]["url"] %>" width = "300px" />
-			</a>
+					<img src = "<%= p["images"]["standard_resolution"]["url"] %>" width = "300px" />
+				</a>
+			<% end %>
 		<% end %>
-	<% end %>
-
+	</div>
 </div>
